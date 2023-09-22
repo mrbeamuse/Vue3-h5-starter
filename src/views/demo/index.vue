@@ -23,8 +23,8 @@ const contentList = reactive([
 const toWx = () => {
   // let wx = require("weixin-js-sdk");
   // eslint-disable-next-line no-undef
-  wx.miniProgram.switchTab({
-    url: "/pages/my/my"
+  wx.miniProgram.navigateTo({
+    url: `/pageA/goodDetail/goodDetail?id=51&fromType=goods`
   });
 };
 </script>
