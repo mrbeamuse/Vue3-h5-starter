@@ -1,6 +1,10 @@
 <script setup lang="ts" name="Demo">
 import { reactive } from "vue";
+import { useRoute } from "vue-router";
 // import wx from "weixin-js-sdk";
+
+const route = useRoute();
+console.log("route", route.query);
 
 const contentList = reactive([
   "✔ ⚡ Vue3 + Vite4",
