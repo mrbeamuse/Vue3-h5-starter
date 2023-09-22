@@ -1,5 +1,6 @@
 <script setup lang="ts" name="Demo">
 import { reactive } from "vue";
+// import wx from "weixin-js-sdk";
 
 const contentList = reactive([
   "✔ ⚡ Vue3 + Vite4",
@@ -19,14 +20,13 @@ const contentList = reactive([
   "✔ 开发环境调试面板"
 ]);
 
-
-
 const toWx = () => {
-  let wx = require('weixin-js-sdk');
-  wx.miniProgram.navigateTo({
-    url:"/pages/my/my?name=test"
-  })
-}
+  // let wx = require("weixin-js-sdk");
+  // eslint-disable-next-line no-undef
+  wx.miniProgram.switchTab({
+    url: "/pages/my/my"
+  });
+};
 </script>
 
 <template>
