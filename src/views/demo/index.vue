@@ -33,20 +33,20 @@ const isIos = () => {
   return isiOS;
 };
 const toWx = () => {
-  if (isIos()) {
-    var params = { url: 'Call APP method "CallApp()"' };
-    console.log("ClickGoodsDetail", params);
-    // @ts-ignore
-    goText.value = window.webkit;
-    // @ts-ignore
-    window.webkit.messageHandlers.ClickGoodsDetail.postMessage(params);
-  } else {
-    // 忽略eslint
-    // eslint-disable-next-line
-    wx.miniProgram.navigateTo({
-      url: `/pageA/goodDetail/goodDetail?id=51&fromType=goods`
-    });
-  }
+  // if (isIos()) {
+  var params = { url: 'Call APP method "CallApp()"' };
+  console.log("ClickGoodsDetail", params);
+  // @ts-ignore
+  goText.value = window.webkit;
+  // @ts-ignore
+  window.webkit.messageHandlers.ClickGoodsDetail.postMessage(params);
+  // } else {
+  //   // 忽略eslint
+  //   // eslint-disable-next-line
+  //   wx.miniProgram.navigateTo({
+  //     url: `/pageA/goodDetail/goodDetail?id=51&fromType=goods`
+  //   });
+  // }
 };
 </script>
 
