@@ -34,13 +34,17 @@ const isIos = () => {
 };
 const toWx = () => {
   // if (isIos()) {
-  var params = { url: 'Call APP method "CallApp()"' };
+  var params = {
+    url: 'Call APP method "CallApp()"',
+    goodsId: "51",
+    clickType: "1" // 商品详情
+  };
   // @ts-ignore
-  console.log("ClickGoodsDetail", params, window.webkit);
+  console.log("handleClick", isIos(), params, window.webkit);
   // @ts-ignore
   goText.value = window.webkit;
   // @ts-ignore
-  window.webkit.messageHandlers.ClickGoodsDetail.postMessage(params);
+  window.webkit.messageHandlers.handleClick.postMessage(params);
   // } else {
   //   // 忽略eslint
   //   // eslint-disable-next-line
