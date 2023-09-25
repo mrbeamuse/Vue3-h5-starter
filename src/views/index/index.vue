@@ -9,24 +9,6 @@ console.log("route", route.query);
 const activityData = ref([]);
 route.query.id = 9;
 
-const contentList = reactive([
-  "✔ ⚡ Vue3 + Vite4",
-  "✔ 🍕 TypeScript",
-  "✔ ✨ Vant4 组件库",
-  "✔ 🌀 Tailwindcss 原子类框架",
-  "✔ 🍍 Pinia 状态管理",
-  "✔ 🌓 支持深色模式",
-  "✔ Vue-router 4",
-  "✔ 支持 SVG 图标自动注册组件",
-  "✔ vw 视口适配",
-  "✔ Axios 封装",
-  "✔ 打包资源 gzip 压缩",
-  "✔ 开发环境支持 Mock 数据",
-  "✔ ESLint",
-  "✔ 首屏加载动画",
-  "✔ 开发环境调试面板"
-]);
-
 const goText = ref("主页点击跳转小程序");
 onMounted(async () => {
   activityData.value = await getActivityApi({ id: 9 });
@@ -54,14 +36,13 @@ const toWx = () => {
 </script>
 
 <template>
-  <div class="demo-content px-[12px]">
+  <div
+    class="demo-content px-[12px]"
+    :style="{ background: activityData?.rgb }"
+  >
     <button @click="toWx">{{ goText }}</button>
-    <img
-      class="block w-[120px] mx-auto mb-[20px] pt-[30px]"
-      alt="Vue logo"
-      src="~@/assets/logo_melomini.png"
-    />
-    <div class="pl-[12px] border-l-[3px] border-[color:#41b883]">
+    <img class="w-full" alt="Vue logo" :src="activityData.backgroundUrl" />
+    <!-- <div class="pl-[12px] border-l-[3px] border-[color:#41b883]">
       <a
         class="flex items-center"
         href="https://github.com/yulimchen/vue3-h5-template"
@@ -80,10 +61,6 @@ const toWx = () => {
         🌱 基于 Vue3 全家桶、TypeScript、Vite 构建工具，开箱即用的 H5
         移动端项目基础模板
       </p>
-    </div>
-
-    <div class="demo-main">
-      <van-cell v-for="(item, idx) in contentList" :key="idx" :title="item" />
-    </div>
+    </div> -->
   </div>
 </template>
