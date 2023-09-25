@@ -1,5 +1,5 @@
 <script setup lang="ts" name="Demo">
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import { useRoute } from "vue-router";
 // import wx from "weixin-js-sdk";
 
@@ -23,19 +23,36 @@ const contentList = reactive([
   "✔ 首屏加载动画",
   "✔ 开发环境调试面板"
 ]);
-
+const goText = ref("点击跳转小程序");
+// 判断是否是ios或者小程序
+const isIos = () => {
+  const u = navigator.userAgent;
+  // const isAndroid = u.indexOf("Android") > -1 || u.indexOf("Adr") > -1; //android终端
+  const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  // const isMiniProgram = u.indexOf("miniProgram") > -1;
+  return isiOS;
+};
 const toWx = () => {
-  // let wx = require("weixin-js-sdk");
-  // eslint-disable-next-line no-undef
-  wx.miniProgram.navigateTo({
-    url: `/pageA/goodDetail/goodDetail?id=51&fromType=goods`
-  });
+  if (isIos()) {
+    var params = { url: 'Call APP method "CallApp()"' };
+    console.log("ClickGoodsDetail", params);
+    // @ts-ignore
+    goText.value = window.webkit;
+    // @ts-ignore
+    window.webkit.messageHandlers.ClickGoodsDetail.postMessage(params);
+  } else {
+    // 忽略eslint
+    // eslint-disable-next-line
+    wx.miniProgram.navigateTo({
+      url: `/pageA/goodDetail/goodDetail?id=51&fromType=goods`
+    });
+  }
 };
 </script>
 
 <template>
   <div class="demo-content px-[12px]">
-    <button @click="toWx">点击跳转小程序</button>
+    <button @click="toWx">{{ goText }}</button>
     <img
       class="block w-[120px] mx-auto mb-[20px] pt-[30px]"
       alt="Vue logo"
