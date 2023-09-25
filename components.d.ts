@@ -19,5 +19,10 @@ declare module '@vue/runtime-core' {
     VanSpace: typeof import('vant/es')['Space']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
+    ZCounpon: typeof import('./src/components/ZCounpon/index.vue')['default']
+    ZList: typeof import('./src/components/ZList/index.vue')['default']
+    ZListItem: typeof import('./src/components/ZListItem/index.vue')['default']
+    ZSwiper: typeof import('./src/components/ZSwiper/index.vue')['default']
+    ZTitle: typeof import('./src/components/ZTitle/index.vue')['default']
   }
 }

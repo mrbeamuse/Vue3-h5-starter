@@ -1,18 +1,48 @@
 <script setup lang="ts" name="Index">
+import type { it } from "node:test";
 // import { reactive, ref, onMounted } from "vue";
 // import { useRoute } from "vue-router";
 import { getActivityApi } from "@/api/index";
 import { isIos } from "@/utils/useUa";
+import ZList from "@/components/ZList/index.vue";
+import ZTitle from "@/components/ZTitle/index.vue";
+import ZSwiper from "@/components/ZSwiper/index.vue";
 
 const route = useRoute();
 console.log("route", route.query);
 const activityData = ref([]);
-route.query.id = 9;
+route.query.id = 12;
 
 const goText = ref("主页点击跳转小程序");
 onMounted(async () => {
-  activityData.value = await getActivityApi({ id: 9 });
+  activityData.value = await getActivityApi({ id: route.query.id });
   console.log("activityData", activityData.value);
+});
+// <span v-if="scope.row.style == 1">list单列</span>
+//               <span v-else-if="scope.row.style == 2">list双列</span>
+//               <span v-else-if="scope.row.style == 3">list三列</span>
+//               <span v-else-if="scope.row.style == 4">轮播图</span>
+//               <span v-else-if="scope.row.style == 5">标题栏</span>
+const compTypeMap = {
+  1: ZList,
+  2: ZList,
+  3: ZList,
+  4: ZSwiper,
+  5: ZTitle
+};
+const productTypeMap = {
+  0: "ZList",
+  1: "ZCounpon"
+};
+
+const componentInfo = computed(() => {
+  return activityData.value.moduleVos?.map(item => {
+    return {
+      ...item,
+      compType: compTypeMap[item.style],
+      productType: productTypeMap[item.type]
+    };
+  });
 });
 
 const toWx = () => {
@@ -37,30 +67,18 @@ const toWx = () => {
 
 <template>
   <div
-    class="demo-content px-[12px]"
+    class="demo-content px-[12px] h-screen overflow-y-auto"
     :style="{ background: activityData?.rgb }"
   >
     <button @click="toWx">{{ goText }}</button>
     <img class="w-full" alt="Vue logo" :src="activityData.backgroundUrl" />
-    <!-- <div class="pl-[12px] border-l-[3px] border-[color:#41b883]">
-      <a
-        class="flex items-center"
-        href="https://github.com/yulimchen/vue3-h5-template"
-        target="_blank"
-      >
-        <svg-icon class="text-[20px] mr-[8px]" name="github" />
-        <h3 class="font-bold text-[18px] my-[4px]">Vue3-h5-template</h3>
-        <svg-icon class="text-[12px] ml-[5px]" name="link" />
-      </a>
-    </div>
-    <div
-      class="text-[14px] py-[2px] px-[10px] rounded-[4px] bg-[var(--color-block-background)] mt-[14px]"
-    >
-      <p class="my-[14px] leading-[24px]">
-        {{ route.query }}
-        🌱 基于 Vue3 全家桶、TypeScript、Vite 构建工具，开箱即用的 H5
-        移动端项目基础模板
-      </p>
-    </div> -->
+    <component
+      v-for="item in componentInfo"
+      :key="item.id"
+      :is="item.compType"
+      :data="item"
+    ></component>
+    <!-- <z-list></z-list> -->
+    <!-- <z-title></z-title> -->
   </div>
 </template>
