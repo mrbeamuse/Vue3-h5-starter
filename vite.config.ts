@@ -10,6 +10,7 @@ import mockDevServerPlugin from "vite-plugin-mock-dev-server";
 import vueSetupExtend from "vite-plugin-vue-setup-extend";
 import viteCompression from "vite-plugin-compression";
 import { createHtmlPlugin } from "vite-plugin-html";
+import AutoImport from "unplugin-auto-import/vite";
 
 // 当前工作目录路径
 const root: string = process.cwd();
@@ -46,6 +47,15 @@ export default defineConfig(({ mode }) => {
             ENABLE_ERUDA: env.VITE_ENABLE_ERUDA || "false"
           }
         }
+      }),
+      AutoImport({
+        imports: ["vue", "vue-router", "@vueuse/core"],
+        dts: "src/auto-imports.d.ts",
+        dirs: ["src/hooks", "src/store"],
+        vueTemplate: true,
+        eslintrc: {
+          enabled: true
+        }
       })
     ],
     resolve: {
@@ -58,8 +68,8 @@ export default defineConfig(({ mode }) => {
       // 仅在 proxy 中配置的代理前缀， mock-dev-server 才会拦截并 mock
       // doc: https://github.com/pengzhanbo/vite-plugin-mock-dev-server
       proxy: {
-        "^/dev-api": {
-          target: ""
+        "^/optimization-pms": {
+          target: "http://192.168.2.236:8080"
         }
       }
     },

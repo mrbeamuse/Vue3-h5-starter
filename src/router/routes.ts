@@ -1,20 +1,28 @@
 import Layout from "@/layout/index.vue";
 import type { RouteRecordRaw } from "vue-router";
-import Demo from "@/views/demo/index.vue";
+import Index from "@/views/index/index.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "root",
     component: Layout,
-    redirect: "Demo",
+    redirect: "Index",
     children: [
+      {
+        path: "index",
+        name: "Index",
+        component: Index,
+        meta: {
+          title: "主页"
+        }
+      },
       {
         path: "demo",
         name: "Demo",
-        component: Demo,
+        component: () => import("@/views/demo/index.vue"),
         meta: {
-          title: "主页"
+          title: "示例"
         }
       },
       {

@@ -1,10 +1,13 @@
-<script setup lang="ts" name="Demo">
-import { reactive, ref } from "vue";
-import { useRoute } from "vue-router";
-// import wx from "weixin-js-sdk";
+<script setup lang="ts" name="Index">
+// import { reactive, ref, onMounted } from "vue";
+// import { useRoute } from "vue-router";
+import { getActivityApi } from "@/api/index";
+import { isIos } from "@/utils/useUa";
 
 const route = useRoute();
 console.log("route", route.query);
+const activityData = ref([]);
+route.query.id = 9;
 
 const contentList = reactive([
   "✔ ⚡ Vue3 + Vite4",
@@ -23,15 +26,13 @@ const contentList = reactive([
   "✔ 首屏加载动画",
   "✔ 开发环境调试面板"
 ]);
-const goText = ref("点击跳转小程序");
-// 判断是否是ios或者小程序
-const isIos = () => {
-  const u = navigator.userAgent;
-  // const isAndroid = u.indexOf("Android") > -1 || u.indexOf("Adr") > -1; //android终端
-  const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-  // const isMiniProgram = u.indexOf("miniProgram") > -1;
-  return isiOS;
-};
+
+const goText = ref("主页点击跳转小程序");
+onMounted(async () => {
+  activityData.value = await getActivityApi({ id: 9 });
+  console.log("activityData", activityData.value);
+});
+
 const toWx = () => {
   var params = {
     url: 'Call APP method "CallApp()"',
