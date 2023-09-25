@@ -35,7 +35,8 @@ const isIos = () => {
 const toWx = () => {
   // if (isIos()) {
   var params = { url: 'Call APP method "CallApp()"' };
-  console.log("ClickGoodsDetail", params);
+  // @ts-ignore
+  console.log("ClickGoodsDetail", params, window.webkit);
   // @ts-ignore
   goText.value = window.webkit;
   // @ts-ignore
