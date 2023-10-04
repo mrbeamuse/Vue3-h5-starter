@@ -23,9 +23,6 @@ dependencies:
   stack-keep-alive:
     specifier: ^1.0.5
     version: 1.0.5(@vue/shared@3.3.4)(vue-router@4.2.2)(vue@3.3.4)
-  swiper:
-    specifier: ^10.2.0
-    version: 10.2.0
   vant:
     specifier: ^4.6.0
     version: 4.6.0(vue@3.3.4)
@@ -35,9 +32,6 @@ dependencies:
   vue-router:
     specifier: ^4.2.2
     version: 4.2.2(vue@3.3.4)
-  weixin-js-sdk:
-    specifier: ^1.6.0
-    version: 1.6.0
 
 devDependencies:
   '@commitlint/cli':
@@ -6675,11 +6669,6 @@ packages:
       stable: 0.1.8
     dev: true
 
-  /swiper@10.2.0:
-    resolution: {integrity: sha512-nktQsOtBInJjr3f5DicxC8eHYGcLXDVIGPSon0QoXRaO6NjKnATCbQ8SZsD3dN1Ph1RH4EhVPwSYCcuDRFWHGQ==}
-    engines: {node: '>= 4.7.0'}
-    dev: false
-
   /tailwindcss@3.3.2(ts-node@10.9.1):
     resolution: {integrity: sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==}
     engines: {node: '>=14.0.0'}
@@ -7340,10 +7329,6 @@ packages:
   /webpack-virtual-modules@0.5.0:
     resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
     dev: true
-
-  /weixin-js-sdk@1.6.0:
-    resolution: {integrity: sha512-3IYQH7aalJGFJrwdT3epvTdR1MboMiH7vIZ5BRL2eYOJ12BNah7csoMkmSZzkq1+l92sSq29XdTCVjCJoK2sBQ==}
-    dev: false
 
   /which-boxed-primitive@1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}
