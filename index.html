@@ -51,10 +51,14 @@
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
-    <% if (ENABLE_ERUDA === "true") { %>
-    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <% if (ENABLE_VCONSOLE === "true") { %>
+    <script src="//cdn.jsdelivr.net/npm/vconsole"></script>
+    <script src="//cdn.jsdelivr.net/npm/vue-vconsole-devtools"></script>
+
     <script>
-      eruda.init();
+      const vConsole = new window.VConsole();
+      const Devtools = window.vueVconsoleDevtools;
+      Devtools.initPlugin(vConsole);
     </script>
     <% } %>
   </body>
