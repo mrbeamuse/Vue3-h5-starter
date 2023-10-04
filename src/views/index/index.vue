@@ -9,15 +9,16 @@ import ZTitle from "@/components/ZTitle/index.vue";
 import ZSwiper from "@/components/ZSwiper/index.vue";
 
 const route = useRoute();
+const router = useRouter();
 console.log("route", route.query);
 const activityData = ref([]);
 route.query.id = 12;
 
 const goText = ref("主页点击跳转小程序");
-onMounted(async () => {
-  activityData.value = await getActivityApi({ id: route.query.id });
-  console.log("activityData", activityData.value);
-});
+// onMounted(async () => {
+//   activityData.value = await getActivityApi({ id: route.query.id });
+//   console.log("activityData", activityData.value);
+// });
 // <span v-if="scope.row.style == 1">list单列</span>
 //               <span v-else-if="scope.row.style == 2">list双列</span>
 //               <span v-else-if="scope.row.style == 3">list三列</span>
@@ -63,6 +64,14 @@ const toWx = () => {
     });
   }
 };
+const goList = () => {
+  router.push({
+    path: "/tools",
+    query: {
+      id: 12
+    }
+  });
+};
 </script>
 
 <template>
@@ -71,13 +80,15 @@ const toWx = () => {
     :style="{ background: activityData?.rgb }"
   >
     <button @click="toWx">{{ goText }}</button>
-    <img class="w-full" alt="Vue logo" :src="activityData.backgroundUrl" />
+    <div @click="goList">这是主页</div>
+    <input type="text" />
+    <!-- <img class="w-full" alt="Vue logo" :src="activityData.backgroundUrl" />
     <component
       v-for="item in componentInfo"
       :key="item.id"
       :is="item.compType"
       :data="item"
-    ></component>
+    ></component> -->
     <!-- <z-list></z-list> -->
     <!-- <z-title></z-title> -->
   </div>
