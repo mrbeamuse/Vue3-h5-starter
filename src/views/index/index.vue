@@ -11,6 +11,7 @@ const contentList = reactive([
   "✔ 🌓 支持深色模式",
   "✔ stack-keep-alive 只能缓存页面及页面跳转动画",
   "✔ 支持 Auto-import 智能导入",
+  "✔ 支持 plop 快速生成页面及路由、组件、api文件",
   "✔ 支持 SVG 图标自动注册组件",
   "✔ vw 视口适配",
   "✔ Axios 封装",
