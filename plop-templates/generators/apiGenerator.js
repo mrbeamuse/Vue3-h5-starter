@@ -21,7 +21,7 @@ module.exports = {
       path: "src/api/index.ts",
       pattern: /(\/\/ append export)/gi,
       // camelCase 用来将输入的名称转化为驼峰
-      template: "export * from './{{ apiName }}'\r\n$1"
+      template: `export * from "./{{ apiName }}";\r\n$1`
     });
     actions.push({
       type: "modify",

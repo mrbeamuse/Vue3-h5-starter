@@ -1,18 +1,18 @@
 import { http } from "@/utils/http";
-// import {} from './types';
+// import {} from "./types";
 
-export const {{ firstUpper apiName }}ListApi = (params) => {
+export const {{ apiName }}ListApi = (params) => {
   return http.request({
-    url: '/{{ apiName }}/list',
-    method: 'get',
+    url: "/{{ apiName }}/list",
+    method: "get",
     params
   });
-}
+};
 
-export const {{ firstUpper apiName }}UpdateApi = (data) => {
+export const {{ apiName }}UpdateApi = (data) => {
   return http.request({
-    url: '/{{ apiName }}/update',
-    method: 'post',
+    url: "/{{ apiName }}/update",
+    method: "post",
     data
   });
-}
+};
