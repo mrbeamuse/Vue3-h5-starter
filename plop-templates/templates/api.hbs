@@ -1,0 +1,18 @@
+import { http } from "@/utils/http";
+// import {} from './types';
+
+export const {{ firstUpper apiName }}ListApi = (params) => {
+  return http.request({
+    url: '/{{ apiName }}/list',
+    method: 'get',
+    params
+  });
+}
+
+export const {{ firstUpper apiName }}UpdateApi = (data) => {
+  return http.request({
+    url: '/{{ apiName }}/update',
+    method: 'post',
+    data
+  });
+}

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 // import tabbar from "@/components/Tabbar/index.vue";
 // import NavBar from "@/components/NavBar/index.vue";
-import { useDarkMode } from "@/hooks/useToggleDarkMode";
+// import { useDarkMode } from "@/hooks/useToggleDarkMode";
 </script>
 
 <template>
   <div class="app-wrapper">
     <van-config-provider :theme="useDarkMode() ? 'dark' : 'light'">
-      <!-- <nav-bar /> -->
+      <nav-bar />
       <router-view v-slot="{ Component }">
         <sk-transition name="slide-left" back_name="slide-right">
           <stack-keep-alive v-slot="{ key }">
@@ -15,7 +15,7 @@ import { useDarkMode } from "@/hooks/useToggleDarkMode";
           </stack-keep-alive>
         </sk-transition>
       </router-view>
-      <!-- <tabbar /> -->
+      <tabbar />
     </van-config-provider>
   </div>
 </template>

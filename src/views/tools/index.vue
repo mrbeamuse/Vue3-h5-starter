@@ -1,5 +1,5 @@
 <script setup lang="ts" name="Tools">
-import { getListApi, getListApiError } from "@/api/mock";
+import { getListApi, getListApiError } from "@/mock";
 import { reactive } from "vue";
 import { showFailToast, showSuccessToast } from "vant";
 import "vant/es/toast/style";
@@ -51,3 +51,4 @@ onMounted(() => {
     </div>
   </div>
 </template>
+@/mock

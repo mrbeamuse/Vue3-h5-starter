@@ -1,13 +1,7 @@
 <script setup lang="ts">
 // import tabbar from "@/components/Tabbar/index.vue";
 // import NavBar from "@/components/NavBar/index.vue";
-import { useCachedViewStoreHook } from "@/store/modules/cachedView";
-import { useDarkMode } from "@/hooks/useToggleDarkMode";
-import { computed } from "vue";
-
-const cachedViews = computed(() => {
-  return useCachedViewStoreHook().cachedViewList;
-});
+// import { useDarkMode } from "@/hooks/useToggleDarkMode";
 </script>
 
 <template>

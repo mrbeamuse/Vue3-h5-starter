@@ -1,9 +1,11 @@
-import { useDarkModeStoreHook } from "@/store/modules/darkMode";
+import { useDarkModeStore } from "@/store/darkMode";
 
 export function useDarkMode() {
-  return useDarkModeStoreHook().darkMode;
+  const darkModeStore = useDarkModeStore();
+  return darkModeStore.darkMode;
 }
 
 export function useToggleDarkMode() {
-  useDarkModeStoreHook().toggleDarkMode();
+  const darkModeStore = useDarkModeStore();
+  darkModeStore.toggleDarkMode();
 }
